@@ -3,22 +3,21 @@ package com.gao.lucene;
 import org.apache.commons.io.FileUtils;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
-import org.apache.lucene.document.Document;
-import org.apache.lucene.document.Field;
-import org.apache.lucene.document.LongField;
-import org.apache.lucene.document.TextField;
+import org.apache.lucene.document.*;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.store.FSDirectory;
 import org.junit.Before;
 import org.junit.Test;
+import org.wltea.analyzer.lucene.IKAnalyzer;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
- * Created by gao on 2017/12/3.
+ *
  */
 public class LuceneTest {
 
@@ -31,7 +30,7 @@ public class LuceneTest {
     public void importIndex() throws IOException{
 
         //索引库位置
-        String indexPath = "/Users/gao/work/developer/workspace/github-workspace/lucene/src/main/resources/index_repository";
+        String indexPath = "/Users/gao/index_repository";
         //原始文档位置
         String sourceFilePath="/Users/gao/work/developer/workspace/github-workspace/lucene/src/main/resources/searchsource";
         //获得索引库的位置
@@ -39,7 +38,7 @@ public class LuceneTest {
         //打开索引库
         FSDirectory dir = FSDirectory.open(path);
         //创建分词器
-        Analyzer al = new StandardAnalyzer();
+        Analyzer al = new IKAnalyzer();
         //创建索引的写入的配置对象
         IndexWriterConfig iwc = new IndexWriterConfig(al);
         //创建索引的Writer
