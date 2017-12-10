@@ -121,8 +121,6 @@ public class LuceneTest3 {
 		QueryParser qp = new QueryParser("fileName", al);
 		//通过qp来解析查询对象
 		Query query = qp.parse("今天我们学习全文检索技术Lucene");
-		
-		
 		System.out.println("打印查询条件："+query);
 		printDoc(is, query);
 		
